@@ -33,7 +33,7 @@ function renderDiscover(){
   document.getElementById('discCount').innerHTML=`<span class="fr">${filtered.length} agents</span><span class="en">${filtered.length} agents</span>`;
 
   const visible=filtered.slice(0,discVisible);
-  document.getElementById('discGrid').innerHTML=visible.map(a=>`<div class="ag"><div class="ag-top"><div class="ag-name"><span class="fr">${a.n.fr}</span><span class="en">${a.n.en}</span></div><span class="ag-sector" style="background:${a.c};color:${a.tc}"><span class="fr">${a.cf}</span><span class="en">${a.ce}</span></span></div><div class="ag-desc"><span class="fr">${a.d.fr}</span><span class="en">${a.d.en}</span></div><div class="ag-foot"><span class="ag-mi">${a.m}</span><span class="ag-badge">${a.icon} <span class="fr">${a.sf}</span><span class="en">${a.se}</span></span><span class="ag-by"><span class="ag-by-dot">M</span> by Mira</span></div></div>`).join('');
+  document.getElementById('discGrid').innerHTML=visible.map(a=>`<div class="ag"><div class="ag-top"><div class="ag-name"><span class="fr">${a.n.fr}</span><span class="en">${a.n.en}</span></div><span class="ag-sector" style="background:${a.c};color:${a.tc}"><span class="fr">${a.cf}</span><span class="en">${a.ce}</span></span></div><div class="ag-desc"><span class="fr">${a.d.fr}</span><span class="en">${a.d.en}</span></div><div class="ag-foot"><span class="ag-mi">${a.m}</span><span class="ag-badge">${a.icon} <span class="fr">${a.sf}</span><span class="en">${a.se}</span></span><span class="ag-by"><span class="ag-by-dot">G</span> by Granit</span></div></div>`).join('');
 
   document.getElementById('loadMore').style.display=discVisible<filtered.length?'block':'none';
   applyLang();
@@ -60,10 +60,21 @@ function go(page,param){
   applyLang();
 }
 
-function submitDemo(e){
+async function submitDemo(e){
   e.preventDefault();
-  document.getElementById('demoForm').style.display='none';
-  document.getElementById('formSuccess').style.display='block';
+  const form=document.getElementById('demoForm');
+  const btn=form.querySelector('.form-submit');
+  btn.disabled=true;
+  const data=Object.fromEntries(new FormData(form));
+  try{
+    const res=await fetch('/api/demo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(!res.ok)throw new Error('server');
+    form.style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+  }catch{
+    btn.disabled=false;
+    alert('Une erreur est survenue. Veuillez réessayer.');
+  }
 }
 
 function toggleLang(){

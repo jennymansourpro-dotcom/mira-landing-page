@@ -85,14 +85,14 @@ const ucTypes = [
 ];
 
 const tools = [
-  {i:'🔌',f:'Intégrations AMC',e:'AMC Integrations',df:'Viamedis, OptoAMC, SESAM-Vitale',de:'Viamedis, OptoAMC, SESAM-Vitale'},
-  {i:'🌐',f:'Navigation web',e:'Web Browsing',df:'Portails sans API automatisés',de:'Portals without API'},
+  {i:'🔌',f:'Connecteurs natifs',e:'Native connectors',df:'REST, SOAP, EDI, HL7 FHIR',de:'REST, SOAP, EDI, HL7 FHIR'},
+  {i:'🌐',f:'Navigation autonome',e:'Autonomous browsing',df:'Portails sans API couverts',de:'Portals without API covered'},
   {i:'📊',f:'Rapprochement',e:'Reconciliation',df:'Match virements / factures',de:'Match transfers / invoices'},
-  {i:'📋',f:'Nomenclatures',e:'Coding',df:'CCAM, NGAP, NABM, LPP, GHM',de:'CCAM, NGAP, NABM, LPP, GHM'},
+  {i:'📋',f:'Nomenclatures',e:'Medical coding',df:'CCAM, NGAP, NABM, LPP, GHM',de:'CCAM, NGAP, NABM, LPP, GHM'},
   {i:'📧',f:'Email & SMS',e:'Email & SMS',df:'Relances, notifications',de:'Follow-ups, notifications'},
-  {i:'🔒',f:'HDS',e:'HDS',df:'Hébergement certifié santé',de:'Certified health hosting'},
+  {i:'🔒',f:'HDS',e:'HDS certified',df:'Hébergement certifié santé',de:'Certified health hosting'},
   {i:'📅',f:'Planification',e:'Scheduling',df:'Cron, webhook, trigger',de:'Cron, webhook, trigger'},
-  {i:'🔍',f:'Droits',e:'Eligibility',df:'Contrôle AMO/AMC temps réel',de:'Real-time AMO/AMC'},
+  {i:'🔗',f:'API ouverte',e:'Open API',df:'Connectez vos propres outils',de:'Connect your own tools'},
   {i:'📈',f:'Dashboards',e:'Dashboards',df:'Performance, anomalies',de:'Performance, anomalies'},
 ];
 

@@ -1,30 +1,34 @@
-# Mira AI — Site vitrine SPA pour agents IA en santé
+# Granit — Site vitrine SPA pour agents IA en santé
 
 ## Lancer le projet
 
-Ouvrez simplement `index.html` dans un navigateur, ou lancez un serveur local :
+Pour le front seul (sans le backend) :
 
 ```bash
-# Python
 python3 -m http.server 8080
-
-# Node (npx)
-npx serve .
 ```
 
-Puis accédez à `http://localhost:8080`.
+Pour tester le backend en local (API + front ensemble) :
+
+```bash
+cp .env.example .env.local   # puis remplir les clés
+npx vercel dev               # démarre sur http://localhost:3000
+```
 
 ## Structure des fichiers
 
 ```
 mira-ai/
 ├── index.html        # HTML uniquement — structure des 3 pages (Home, Discover, Demo)
+├── api/
+│   └── demo.js       # Vercel serverless function — POST /api/demo
 ├── css/
 │   └── style.css     # Tous les styles (nav, hero, carousel, features, discover, demo, responsive)
 ├── js/
 │   ├── data.js       # Constantes de données : agents, sectors, ucTypes, tools, cardColors
 │   └── app.js        # Logique SPA : navigation, rendu UI, filtres, toggle langue
 ├── assets/           # Dossier pour futures images / polices locales
+├── .env.example      # Variables d'environnement à configurer
 └── README.md
 ```
 
@@ -33,6 +37,33 @@ mira-ai/
 - **HTML/CSS/JS vanilla** — aucun framework, aucun bundler
 - **Google Fonts** — DM Sans + DM Serif Display (importées dans `css/style.css`)
 - **SPA côté client** — navigation par `display: none / block`, pas de rechargement de page
+- **Vercel Serverless Functions** — `api/demo.js` pour traiter les demandes de démo
+- **Resend** — notification interne à jenny@getgranit.ai + email de confirmation au prospect
+
+## Configuration du backend
+
+### 1. Resend
+
+1. Créer un compte sur [resend.com](https://resend.com)
+2. Vérifier ton domaine (ou utiliser `onboarding@resend.dev` pour tester)
+3. Générer une **API Key**
+
+### 2. Variables d'environnement
+
+```bash
+cp .env.example .env.local
+# Remplir RESEND_API_KEY, FROM_EMAIL, TEAM_EMAIL
+```
+
+**Sur Vercel** : Settings → Environment Variables → ajouter les 3 variables.
+
+### Flux complet
+
+```
+Formulaire → POST /api/demo (JSON)
+  ├── Email → TEAM_EMAIL (tous les champs du formulaire)
+  └── Email → prospect (confirmation sous 24h)
+```
 
 ## Ajouter un nouvel agent
 
