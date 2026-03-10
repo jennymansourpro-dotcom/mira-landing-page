@@ -4,11 +4,6 @@ let discCat = 'all';
 let discVisible = 10;
 
 // ═══ RENDER ═══
-function renderCarousel(){
-  const h=sectors.filter(s=>s.id!=='all').map((s,i)=>`<div class="crd" onclick="go('discover','${s.id}')"><div class="crdbg" style="background:${cardColors[i%cardColors.length]}">${s.icon}</div><div class="crdgr"></div><div class="crdl"><span class="fr">${s.fr}</span><span class="en">${s.en}</span></div></div>`).join('');
-  document.getElementById('track').innerHTML=h+h;
-}
-
 function renderPills(){
   document.getElementById('pills').innerHTML=sectors.filter(s=>s.id!=='all').map(s=>`<div class="pill" onclick="go('discover','${s.id}')">${s.icon} <span class="fr">${s.fr}</span><span class="en">${s.en}</span></div>`).join('');
 }
@@ -89,4 +84,4 @@ function applyLang(){
   document.querySelectorAll('.en').forEach(e=>e.style.display=l==='en'?'':'none');
 }
 
-renderCarousel();renderPills();renderTools();applyLang();
+renderPills();renderTools();applyLang();
