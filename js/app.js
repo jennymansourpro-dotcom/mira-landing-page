@@ -4,14 +4,6 @@ let discCat = 'all';
 let discVisible = 10;
 
 // ═══ RENDER ═══
-function renderPills(){
-  document.getElementById('pills').innerHTML=sectors.filter(s=>s.id!=='all').map(s=>`<div class="pill" onclick="go('discover','${s.id}')">${s.icon} ${s.fr}</div>`).join('');
-}
-
-function renderTools(){
-  document.getElementById('tg').innerHTML=tools.map(t=>`<div class="tc"><div class="tci">${t.i}</div><div class="tcn">${t.f}</div><div class="tcd">${t.df}</div></div>`).join('');
-}
-
 function renderDiscover(){
   // Sidebar
   let sb='<div class="disc-sb-title">Secteur</div>';
@@ -53,6 +45,16 @@ function go(page,param){
   if(page==='discover'){if(param)discSector=param;else{discSector='all';discCat='all'}discVisible=10;renderDiscover()}
 }
 
+function goDemo(){
+  const isHome=document.getElementById('page-home').classList.contains('active');
+  if(!isHome){
+    go('home');
+    setTimeout(()=>document.getElementById('demo').scrollIntoView({behavior:'smooth'}),80);
+  } else {
+    document.getElementById('demo').scrollIntoView({behavior:'smooth'});
+  }
+}
+
 async function submitDemo(e){
   e.preventDefault();
   const form=document.getElementById('demoForm');
@@ -69,5 +71,3 @@ async function submitDemo(e){
     alert('Une erreur est survenue. Veuillez réessayer.');
   }
 }
-
-renderPills();renderTools();

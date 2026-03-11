@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Granit - Vos équipes soignent. Granit gère le reste.</title>
+<title>Granit — Vos équipes soignent. Granit gère le reste.</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,184 +12,374 @@
   <div class="nl" onclick="go('home')"><div class="nm">G</div> Granit</div>
   <div class="nr">
     <div class="na" data-page="discover" onclick="go('discover')">Découvrir</div>
-    <button class="ncta" onclick="go('demo')">Réserver une démo</button>
+    <button class="nav-signin">Se connecter</button>
+    <button class="nav-cta" onclick="goDemo()">Réserver une démo</button>
   </div>
 </nav>
 
 <!-- ═══ HOME ═══ -->
 <div class="page active" id="page-home">
-<div class="hero-wrap">
-<div class="tb">Vos systèmes ne se parlent pas ? <span onclick="go('discover')">Voyez comment Granit les connecte - et automatise le reste →</span></div>
-<section class="hero">
-  <h1>Vos équipes soignent.<br>Granit gère le <em>reste.</em></h1>
-  <p class="hero-sub">Granit automatise les tâches administratives qui freinent vos équipes : tiers-payant, rejets, recouvrement. Branché sur vos outils existants. Opérationnel en 48h.</p>
-  <div class="hq">
-    <span class="hqi">"On a récupéré 3h par jour"</span><div class="hdot"></div>
-    <span class="hqi">"Zéro rejet depuis 4 mois"</span><div class="hdot"></div>
-    <span class="hqi">"Enfin une IA branchée sur tous nos systèmes"</span>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Solution française — déployée en centres de santé
+      </div>
+      <h1>Vos équipes soignent.<br>Granit gère le reste.</h1>
+      <p class="sub">Granit automatise les tâches administratives qui freinent vos équipes : tiers-payant, rejets, recouvrement. Branché sur vos outils existants. Opérationnel en 48h.</p>
+      <div class="hero-btns">
+        <button class="btn-terra" onclick="goDemo()">Réserver ma démo gratuite</button>
+        <button class="btn-ghost" onclick="go('discover')">Voir ce que Granit automatise</button>
+      </div>
+    </div>
   </div>
-  <div class="hbtns">
-    <button class="bb" onclick="go('demo')">Réserver ma démo gratuite</button>
-    <button class="bo" onclick="go('discover')">Voir ce que Granit automatise</button>
+
+  <!-- MOCKUP -->
+  <div class="hero-mockup">
+    <div class="mockup">
+      <div class="mock-bar">
+        <div class="mock-dots">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+        </div>
+        <span class="mock-title">Granit — Tableau de bord</span>
+      </div>
+      <div class="mock-body">
+
+        <!-- Sidebar -->
+        <div class="mock-sb">
+          <div class="mock-sb-sec">
+            <div class="mock-sb-label">Agents actifs</div>
+            <div class="mock-sb-item active">
+              Tiers-payant
+              <span class="mock-badge-a">actif</span>
+            </div>
+            <div class="mock-sb-item">
+              Rejets CPAM
+              <span class="mock-badge-a">actif</span>
+            </div>
+            <div class="mock-sb-item">
+              Recouvrement
+              <span class="mock-badge-a">actif</span>
+            </div>
+          </div>
+          <div class="mock-sb-sec">
+            <div class="mock-sb-label">Connexions</div>
+            <div class="mock-conn">
+              <span class="mock-conn-dot ok"></span>
+              Viamedis
+            </div>
+            <div class="mock-conn">
+              <span class="mock-conn-dot ok"></span>
+              OptoAMC
+            </div>
+            <div class="mock-conn">
+              <span class="mock-conn-dot sync"></span>
+              SESAM-Vitale
+            </div>
+          </div>
+        </div>
+
+        <!-- Journal -->
+        <div class="mock-col">
+          <div class="mock-col-title">Journal — aujourd'hui</div>
+
+          <div class="log-item running">
+            <div class="log-icon">⚡</div>
+            <div class="log-body">
+              <div class="log-title">Vérification droits — 14 patients</div>
+              <div class="log-desc">Viamedis · Contrôle en cours</div>
+              <div class="log-running-badge">En cours</div>
+            </div>
+          </div>
+
+          <div class="log-item">
+            <div class="log-icon">✓</div>
+            <div class="log-body">
+              <div class="log-title">Rejet CPAM corrigé — Dossier #4821</div>
+              <div class="log-desc">Code acte corrigé automatiquement</div>
+              <div class="log-time">08:42</div>
+            </div>
+          </div>
+
+          <div class="log-item">
+            <div class="log-icon">📨</div>
+            <div class="log-body">
+              <div class="log-title">Relances envoyées — 6 impayés</div>
+              <div class="log-desc">Email + SMS · &gt; 30 jours</div>
+              <div class="log-time">08:00</div>
+            </div>
+          </div>
+
+          <div class="log-item">
+            <div class="log-icon">💳</div>
+            <div class="log-body">
+              <div class="log-title">Rapprochement bancaire terminé</div>
+              <div class="log-desc">47 transactions réconciliées</div>
+              <div class="log-time">06:15</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mock-col">
+          <div class="mock-col-title">Stats — cette semaine</div>
+          <div class="mock-stat-main">
+            <div class="mock-stat-num">3h12</div>
+            <div class="mock-stat-lbl">récupérées aujourd'hui<br>par l'équipe admin</div>
+          </div>
+          <div class="mock-stat-grid">
+            <div class="mock-mini">
+              <div class="mock-mini-num">99.1%</div>
+              <div class="mock-mini-lbl">first-pass rate</div>
+            </div>
+            <div class="mock-mini">
+              <div class="mock-mini-num">0</div>
+              <div class="mock-mini-lbl">rejets cette semaine</div>
+            </div>
+            <div class="mock-mini">
+              <div class="mock-mini-num">48h</div>
+              <div class="mock-mini-lbl">mise en production</div>
+            </div>
+            <div class="mock-mini">
+              <div class="mock-mini-num">50+</div>
+              <div class="mock-mini-lbl">connecteurs natifs</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
-<div class="stats-row">
-  <div class="stat">
-    <div class="stat-num"><em>3h</em></div>
-    <div class="stat-lbl">récupérées par jour par équipe admin</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num"><em>99.1%</em></div>
-    <div class="stat-lbl">first-pass rate</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num"><em>50+</em></div>
-    <div class="stat-lbl">connecteurs natifs activables</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num"><em>&lt;2s</em></div>
-    <div class="stat-lbl">par vérification de droits</div>
+
+<!-- METRICS BAND -->
+<div class="metrics">
+  <div class="metrics-inner">
+    <div class="metric">
+      <div class="metric-val">3h</div>
+      <div class="metric-lbl">récupérées par jour<br>par équipe admin</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">99.1%</div>
+      <div class="metric-lbl">first-pass rate<br>sur les dossiers traités</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">50+</div>
+      <div class="metric-lbl">connecteurs natifs<br>activables sans migration</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">&lt;2s</div>
+      <div class="metric-lbl">par vérification<br>de droits en temps réel</div>
+    </div>
   </div>
 </div>
-</div>
 
-<section class="feats">
-  <div class="feat">
-    <div><h2>Décrivez votre quotidien,<br>Granit fait le <em>reste.</em></h2><p>Pas de cahier des charges. Pas de formation. Dites-nous ce qui vous ralentit - tiers-payant, rejets, impayés - et Granit déploie les bons agents en quelques minutes. Chaque agent se branche automatiquement sur les API de vos outils existants.</p></div>
-    <div class="demo"><div class="dtop"><div class="dd dr"></div><div class="dd dy"></div><div class="dd dg"></div><span class="dti">Granit Agent Builder</span></div><div class="dbd">
-      <div class="cr"><div class="cav cai">G</div><div class="cb">Quel est votre secteur ? Qu'est-ce qui prend le plus de temps à vos équipes admin ?</div></div>
-      <div class="cr" style="justify-content:flex-end"><div class="cb cbu">Centre optique. Le tiers-payant nous prend 3h/jour.</div></div>
-      <div class="cr"><div class="cav cai">G</div><div class="cb">Je connecte OptoAMC + Viamedis et configure 3 agents : vérification droits, calcul reste à charge, rapprochement bancaire auto. On lance ?</div></div>
-      <div class="cr" style="justify-content:flex-end"><div class="cb cbu">Oui !</div></div>
-      <div class="cr"><div class="cav cai">G</div><div class="cb cbs">▸ Viamedis ✓  ▸ OptoAMC ✓  ▸ Banque ✓</div></div>
-    </div></div>
-  </div>
-  <div class="feat">
-    <div><h2>Branché sur vos outils.<br>Sans <em>migration.</em></h2><p>Granit se connecte à ce que vous utilisez déjà : Viamedis, OptoAMC, SESAM-Vitale, votre logiciel de gestion, votre banque. Pas de changement d'infrastructure. Pas de développement sur mesure. On branche, on configure, on lance.</p></div>
-    <div class="demo"><div class="dtop"><div class="dd dr"></div><div class="dd dy"></div><div class="dd dg"></div><span class="dti">Connexions actives</span></div><div class="dst">
-      <div class="si"><div class="sii sok">✓</div><span>SESAM-Vitale</span><span class="sit">12ms</span></div>
-      <div class="si"><div class="sii sok">✓</div><span>Viamedis</span><span class="sit">280ms</span></div>
-      <div class="si"><div class="sii sok">✓</div><span>OptoAMC</span><span class="sit">340ms</span></div>
-      <div class="si"><div class="sii sok">✓</div><span>SIH Crossway</span><span class="sit">89ms</span></div>
-      <div class="si"><div class="sii srun">⟳</div><span style="color:var(--g400)">LGO Optique - synchronisation...</span></div>
-    </div></div>
-  </div>
-  <div class="feat">
-    <div><h2>Le portail n'a pas d'API ?<br>Granit se <em>débrouille.</em></h2><p>Certaines mutuelles n'exposent aucune API. Pas de problème - Granit bascule en navigation autonome : il s'authentifie, navigue et extrait les données comme le ferait votre meilleure secrétaire, sans jamais s'arrêter.</p></div>
-    <div class="demo"><div class="dtop"><div class="dd dr"></div><div class="dd dy"></div><div class="dd dg"></div><span class="dti">Navigation autonome</span></div><div class="dbd">
-      <div class="cr"><div class="cav cai">G</div><div class="cb">Le portail AMC n'expose pas d'API. Bascule en navigation autonome.</div></div>
-      <div class="cr"><div class="cav cai">G</div><div class="cb cbs">🌐 Authentification portail...<br>📋 Extraction garanties...<br>✓ 100% Santé - Classe A</div></div>
-      <div class="cr"><div class="cav cai">G</div><div class="cb">Portail modifié. Adaptation en cours... Chemin alternatif ✓</div></div>
-    </div></div>
-  </div>
-  <div class="feat">
-    <div><h2>Vous dormez.<br>Granit <em>travaille.</em></h2><p>Les relances partent à 8h. Les rejets sont corrigés à 6h. Les droits sont vérifiés la veille de chaque RDV. Programmez une fois, Granit tourne en continu - weekends et jours fériés inclus. Chaque action s'appuie sur des connexions en temps réel, jamais sur des données périmées.</p></div>
-    <div class="demo"><div class="dtop"><div class="dd dr"></div><div class="dd dy"></div><div class="dd dg"></div><span class="dti">Scheduler</span></div><div class="dbd">
-      <div class="cr" style="justify-content:flex-end"><div class="cb cbu">Lance le recouvrement tous les matins à 8h</div></div>
-      <div class="cr"><div class="cav cai">G</div><div class="cb">✓ Programmé. 8h chaque matin :<br>1. Scan impayés > 30j<br>2. Relances email/SMS<br>3. Escalade > 90j<br><br>⏱ Prochaine : <b>14h 23min</b></div></div>
-    </div></div>
-  </div>
-</section>
-
-<section class="psec">
-  <h2>Quel que soit votre métier,<br>Granit parle votre <em>langue.</em></h2>
-  <div class="pills" id="pills"></div>
-</section>
-<section class="tsec">
-  <h2>50+ connecteurs natifs. <em>Zéro migration.</em></h2>
-  <div class="tg" id="tg"></div>
-</section>
-
-<section class="pourqui">
-  <h2>Granit s'adapte à votre <em>métier</em></h2>
-  <div class="pq-grid">
-    <div class="pq-card">
-      <div class="pq-icon">🦷</div>
-      <h3>Centres dentaires</h3>
-      <p>Tiers-payant AMC, rejets CPAM, recouvrement</p>
+<!-- POUR QUI -->
+<section class="pq-section">
+  <div class="pq-inner">
+    <div class="eyebrow">Pour qui</div>
+    <h2 class="section-title">Granit s'adapte à votre métier</h2>
+    <p class="section-sub">Des agents IA opérationnels pour chaque spécialité de santé, connectés nativement à vos systèmes.</p>
+    <div class="pq-grid">
+      <div class="pq-card">
+        <div class="pq-icon">🦷</div>
+        <h3>Centres dentaires</h3>
+        <p>Tiers-payant AMC, rejets CPAM, recouvrement automatisé.</p>
+        <div class="pq-tags">
+          <span class="pq-tag">Tiers-payant</span>
+          <span class="pq-tag">Rejets</span>
+          <span class="pq-tag">Recouvrement</span>
+        </div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">👓</div>
+        <h3>Centres optiques</h3>
+        <p>Vérification droits Viamedis et OptoAMC, devis, remboursements.</p>
+        <div class="pq-tags">
+          <span class="pq-tag">Viamedis</span>
+          <span class="pq-tag">OptoAMC</span>
+          <span class="pq-tag">Devis</span>
+        </div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">👂</div>
+        <h3>Audioprothésistes</h3>
+        <p>Dossiers 100% Santé, suivi remboursements, rapprochement bancaire.</p>
+        <div class="pq-tags">
+          <span class="pq-tag">100% Santé</span>
+          <span class="pq-tag">Remboursements</span>
+        </div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-icon">🏥</div>
+        <h3>EHPAD et cliniques</h3>
+        <p>Facturation, prise en charge, relances automatisées.</p>
+        <div class="pq-tags">
+          <span class="pq-tag">Facturation</span>
+          <span class="pq-tag">Prise en charge</span>
+          <span class="pq-tag">Relances</span>
+        </div>
+      </div>
     </div>
-    <div class="pq-card">
-      <div class="pq-icon">👓</div>
-      <h3>Centres optiques</h3>
-      <p>Vérification droits Viamedis / OptoAMC, devis, remboursements</p>
-    </div>
-    <div class="pq-card">
-      <div class="pq-icon">👂</div>
-      <h3>Audioprothésistes</h3>
-      <p>Dossiers 100% Santé, suivi remboursements</p>
-    </div>
-    <div class="pq-card">
-      <div class="pq-icon">🏥</div>
-      <h3>EHPAD et cliniques</h3>
-      <p>Facturation, prise en charge, relances</p>
-    </div>
-  </div>
-  <div class="pq-cta">
-    <button class="bb" onclick="go('demo')">Demander une démo gratuite</button>
   </div>
 </section>
 
-<section class="ctasec">
-  <h2>La santé change. Restez <em>devant.</em></h2>
-  <p>Recevez nos études de cas, retours d'expérience et nouveautés.</p>
-  <div class="nletter"><input type="email" placeholder="email@example.com"><button>S'inscrire</button></div>
+<!-- COMMENT CA MARCHE -->
+<section class="how-section">
+  <div class="how-inner">
+    <div class="eyebrow">Comment ça marche</div>
+    <h2 class="section-title">Opérationnel en 48h, sans migration</h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <h3>Décrivez votre quotidien</h3>
+        <p>Dites-nous ce qui ralentit vos équipes. Pas de cahier des charges, pas de formation. Granit identifie les flux à automatiser en quelques minutes.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <h3>Granit se connecte à vos outils</h3>
+        <p>Viamedis, OptoAMC, SESAM-Vitale, votre logiciel de gestion. Pas de changement d'infrastructure. On branche, on configure, on lance.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <h3>Vos agents tournent en continu</h3>
+        <p>Les relances partent à 8h. Les rejets sont corrigés à 6h. Weekends et jours fériés inclus. Chaque action s'appuie sur des données en temps réel.</p>
+      </div>
+    </div>
+  </div>
 </section>
-</div>
+
+<!-- INTEGRATIONS -->
+<section class="integ-section">
+  <div class="integ-inner">
+    <div>
+      <div class="eyebrow">Intégrations</div>
+      <h2 class="section-title">50+ connecteurs natifs.<br>Zéro migration.</h2>
+      <p class="section-sub">Granit se connecte à ce que vous utilisez déjà. Si le portail n'expose pas d'API, Granit bascule en navigation autonome et extrait les données comme le ferait votre meilleure secrétaire.</p>
+    </div>
+    <div class="integ-list">
+      <div class="integ-row">
+        <span class="integ-dot ok"></span>
+        <span class="integ-name">SESAM-Vitale</span>
+        <span class="integ-time">12ms</span>
+      </div>
+      <div class="integ-row">
+        <span class="integ-dot ok"></span>
+        <span class="integ-name">Viamedis</span>
+        <span class="integ-time">280ms</span>
+      </div>
+      <div class="integ-row">
+        <span class="integ-dot ok"></span>
+        <span class="integ-name">OptoAMC</span>
+        <span class="integ-time">340ms</span>
+      </div>
+      <div class="integ-row">
+        <span class="integ-dot ok"></span>
+        <span class="integ-name">SIH Crossway</span>
+        <span class="integ-time">89ms</span>
+      </div>
+      <div class="integ-row">
+        <span class="integ-dot sync"></span>
+        <span class="integ-name" style="color:var(--text-muted)">LGO Optique — synchronisation...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO SECTION -->
+<section class="demo-section" id="demo">
+  <div class="demo-inner">
+    <div>
+      <div class="eyebrow">Démo gratuite</div>
+      <h2 class="section-title">Voyons ce que Granit peut faire pour vous</h2>
+      <p class="section-sub">15 minutes. Pas de slides. On vous montre Granit en action sur vos vrais flux, connecté en direct à vos systèmes, et vous repartez avec un plan d'automatisation concret.</p>
+    </div>
+    <div class="demo-form-card">
+      <form id="demoForm" onsubmit="submitDemo(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prénom et nom</label>
+            <input type="text" name="name" required placeholder="Jean Dupont">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="jean@clinique.fr">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" name="phone" placeholder="+33 6 12 34 56 78">
+          </div>
+          <div class="form-group">
+            <label>Nom de la structure</label>
+            <input type="text" name="org" placeholder="Clinique du Parc">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Type de structure</label>
+          <select name="type" required>
+            <option value="" disabled selected>Sélectionnez...</option>
+            <option>Centre dentaire</option>
+            <option>Centre optique</option>
+            <option>Audioprothésiste</option>
+            <option>Hôpital / Clinique</option>
+            <option>EHPAD</option>
+            <option>Pharmacie</option>
+            <option>Laboratoire pharmaceutique</option>
+            <option>Laboratoire de biologie</option>
+            <option>Orthodontie / Orthopédie</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Quels systèmes utilisez-vous aujourd'hui ?</label>
+          <textarea name="challenge" placeholder="Ex : Viamedis, OptoAMC, SESAM-Vitale, logiciel de caisse..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Demander une démo gratuite →</button>
+        <div class="form-note">15 minutes. Sans engagement. Réponse sous 24h.</div>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <h2>C'est noté !</h2>
+        <p>Notre équipe prépare votre démo personnalisée. Vous recevez un email sous 24h avec votre créneau.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end page-home -->
 
 <!-- ═══ DISCOVER ═══ -->
 <div class="page" id="page-discover">
-<div class="disc-hero">
-  <h1>Ce que Granit automatise <em>aujourd'hui</em></h1>
-  <p>Des dizaines d'agents IA déjà opérationnels dans les centres dentaires, optiques, hôpitaux, EHPAD et pharmacies. Chacun connecté en natif à vos systèmes. Trouvez le vôtre.</p>
-</div>
-<div class="disc-layout">
-  <div class="disc-sidebar" id="discSidebar"></div>
-  <div>
-    <div class="disc-count" id="discCount"></div>
-    <div class="disc-grid" id="discGrid"></div>
-    <div class="load-more" id="loadMore"><button onclick="loadMoreAgents()">Charger plus</button></div>
+  <div class="disc-hero">
+    <h1>Ce que Granit automatise <em>aujourd'hui</em></h1>
+    <p>Des dizaines d'agents IA déjà opérationnels dans les centres dentaires, optiques, hôpitaux, EHPAD et pharmacies. Chacun connecté en natif à vos systèmes. Trouvez le vôtre.</p>
   </div>
-</div>
-</div>
-
-<!-- ═══ DEMO ═══ -->
-<div class="page" id="page-demo">
-<div class="demo-page">
-  <h1>Voyons ce que Granit peut faire pour <em>vous</em></h1>
-  <p>15 minutes. Pas de slides. On vous montre Granit en action sur vos vrais flux - connecté en direct à vos systèmes - et vous repartez avec un plan d'automatisation concret.</p>
-  <form id="demoForm" onsubmit="submitDemo(event)">
-    <div class="form-group"><label>Prénom et nom</label><input type="text" name="name" required placeholder="Jean Dupont"></div>
-    <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="jean@clinique.fr"></div>
-    <div class="form-group"><label>Téléphone</label><input type="tel" name="phone" placeholder="+33 6 12 34 56 78"></div>
-    <div class="form-group"><label>Nom de la structure</label><input type="text" name="org" placeholder="Clinique du Parc"></div>
-    <div class="form-group"><label>Type de structure</label>
-      <select name="type" required>
-        <option value="" disabled selected>Sélectionnez...</option>
-        <option>Centre dentaire</option><option>Centre optique</option><option>Audioprothésiste</option>
-        <option>Hôpital / Clinique</option><option>EHPAD</option><option>Pharmacie</option>
-        <option>Laboratoire pharmaceutique</option><option>Laboratoire de biologie</option>
-        <option>Orthodontie / Orthopédie</option><option>Autre</option>
-      </select>
+  <div class="disc-layout">
+    <div class="disc-sidebar" id="discSidebar"></div>
+    <div style="flex:1;min-width:0">
+      <div class="disc-count" id="discCount"></div>
+      <div class="disc-grid" id="discGrid"></div>
+      <div class="load-more" id="loadMore"><button onclick="loadMoreAgents()">Charger plus</button></div>
     </div>
-    <div class="form-group"><label>Quels systèmes utilisez-vous aujourd'hui ?</label><textarea name="challenge" placeholder="Ex : Viamedis, OptoAMC, SESAM-Vitale, logiciel de caisse..."></textarea></div>
-    <button type="submit" class="form-submit">Demander une démo gratuite →</button>
-    <div class="form-note">15 minutes. Sans engagement. Réponse sous 24h.</div>
-  </form>
-  <div class="form-success" id="formSuccess">
-    <div class="check">✓</div>
-    <h2>C'est noté !</h2>
-    <p>Notre équipe prépare votre démo personnalisée. Vous recevez un email sous 24h avec votre créneau.</p>
   </div>
-</div>
 </div>
 
 <footer>
-  <div class="fl"><div class="flg">Granit</div>Vos équipes soignent. Granit gère le reste.<br><br>© 2025 Granit AI - Solution française d'automatisation administrative pour la santé</div>
-  <div class="fcs">
-    <div class="fc"><h4>Produit</h4><a onclick="go('discover')">Découvrir</a><a onclick="go('demo')">Réserver une démo</a></div>
-    <div class="fc"><h4>Entreprise</h4><a href="#">Blog</a><a href="#">À propos</a></div>
-    <div class="fc"><h4>Légal</h4><a href="#">Confidentialité</a><a href="#">CGU</a></div>
+  <div class="footer-brand">Granit</div>
+  <div class="footer-links">
+    <a href="#">Confidentialité</a>
+    <a href="#">CGU</a>
+    <a href="#">Blog</a>
+    <a href="#">À propos</a>
   </div>
+  <div class="footer-copy">© 2025 Granit AI</div>
 </footer>
 
 <script src="js/data.js"></script>
