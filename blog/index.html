@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Granit</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23C0654A'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700' font-size='20'>G</text></svg>">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  /* ── Blog-specific layout ── */
+  .blog-page {
+    padding-top: 56px;
+    min-height: 100vh;
+  }
+
+  .blog-header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 48px 48px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .blog-header .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 16px;
+  }
+
+  .blog-header h1 {
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    letter-spacing: -.02em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .blog-header p {
+    font-size: 16px;
+    color: var(--text-soft);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── Article grid ── */
+  .blog-body {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 48px 48px 96px;
+  }
+
+  .blog-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    letter-spacing: .02em;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .article-card {
+    display: block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .article-card:hover {
+    border-color: var(--border2);
+    box-shadow: 0 4px 20px rgba(26,23,20,.07);
+    transform: translateY(-2px);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .article-date {
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+
+  .article-tag {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--terra);
+    background: var(--terra-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .article-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 10px;
+    letter-spacing: -.01em;
+  }
+
+  .article-desc {
+    font-size: 13.5px;
+    color: var(--text-soft);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .article-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--terra);
+    opacity: 0;
+    transition: opacity .15s;
+  }
+
+  .article-card:hover .article-arrow {
+    opacity: 1;
+  }
+
+  /* ── Empty / Loading states ── */
+  .blog-empty {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+  }
+
+  .blog-empty .empty-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .blog-empty h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+
+  .blog-empty p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .blog-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 40px 0;
+    grid-column: 1 / -1;
+  }
+
+  .loading-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    animation: blink 1.2s ease infinite;
+  }
+  .loading-dot:nth-child(2) { animation-delay: .2s; }
+  .loading-dot:nth-child(3) { animation-delay: .4s; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .blog-header { padding: 48px 24px 36px; }
+    .blog-body { padding: 32px 24px 64px; }
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nl" onclick="location.href='../'">
+    <div class="nm">G</div>
+    <span>Granit<span style="color:var(--terra)">.</span></span>
+  </div>
+  <div class="nr">
+    <div class="na act">Blog</div>
+    <button class="nav-cta" onclick="location.href='../#demo'">Réserver une démo</button>
+  </div>
+</nav>
+
+<div class="blog-page">
+
+  <div class="blog-header">
+    <div class="eyebrow">Blog</div>
+    <h1>Ressources &amp; actualités</h1>
+    <p>Conseils pratiques, retours d'expérience et actualités sur l'automatisation administrative dans les établissements de santé.</p>
+  </div>
+
+  <div class="blog-body">
+    <div class="blog-count" id="blogCount"></div>
+    <div class="blog-grid" id="blogGrid">
+      <div class="blog-loading">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <span>Chargement des articles…</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">Granit</div>
+  <div class="footer-links">
+    <a href="#">Confidentialité</a>
+    <a href="#">CGU</a>
+    <a href="./index.html">Blog</a>
+    <a href="#">À propos</a>
+  </div>
+  <div class="footer-copy">© 2025 Granit AI - Agents IA pour les professionnels de santé</div>
+  <div class="footer-copy" style="margin-top:4px">Vos équipes soignent. Granit gère le reste.</div>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+//  Blog index — reads articles.json manifest
+//
+//  The external script that pushes HTML files
+//  into blog/ should also maintain articles.json
+//  in the following format:
+//
+//  [
+//    {
+//      "file":        "mon-article.html",   // required — filename in blog/
+//      "title":       "Mon article",         // optional — falls back to <title>
+//      "date":        "2025-03-13",          // optional — ISO date string
+//      "description": "Résumé court…",       // optional
+//      "tag":         "Conseils"             // optional — category label
+//    }
+//  ]
+// ─────────────────────────────────────────────
+
+const grid  = document.getElementById('blogGrid');
+const count = document.getElementById('blogCount');
+
+function formatDate(iso) {
+  if (!iso) return null;
+  try {
+    return new Date(iso).toLocaleDateString('fr-FR', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+  } catch (_) { return iso; }
+}
+
+function renderCard(article) {
+  const card = document.createElement('a');
+  card.className = 'article-card';
+  card.href = article.file;
+
+  const meta = (article.date || article.tag) ? `
+    <div class="article-meta">
+      ${article.date ? `<span class="article-date">${formatDate(article.date)}</span>` : ''}
+      ${article.tag  ? `<span class="article-tag">${article.tag}</span>` : ''}
+    </div>` : '';
+
+  card.innerHTML = `
+    ${meta}
+    <div class="article-title">${article.title || article.file}</div>
+    ${article.description ? `<div class="article-desc">${article.description}</div>` : ''}
+    <div class="article-arrow">Lire l'article →</div>
+  `;
+
+  return card;
+}
+
+async function loadArticles() {
+  let articles = [];
+
+  try {
+    const res = await fetch('articles.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('manifest absent');
+    articles = await res.json();
+  } catch (_) {
+    // articles.json unavailable — show helpful empty state
+  }
+
+  grid.innerHTML = '';
+
+  if (!Array.isArray(articles) || articles.length === 0) {
+    grid.innerHTML = `
+      <div class="blog-empty">
+        <div class="empty-icon">📝</div>
+        <h3>Aucun article pour l'instant</h3>
+        <p>Les articles apparaîtront ici dès que le script les aura publiés.</p>
+      </div>`;
+    count.textContent = '';
+    return;
+  }
+
+  // Sort by date descending (most recent first), undated articles last
+  articles.sort((a, b) => {
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  count.textContent = articles.length === 1
+    ? '1 article'
+    : `${articles.length} articles`;
+
+  articles.forEach(article => grid.appendChild(renderCard(article)));
+}
+
+loadArticles();
+</script>
+</body>
+</html>
